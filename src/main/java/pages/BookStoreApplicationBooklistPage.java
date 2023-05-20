@@ -36,4 +36,15 @@ public class BookStoreApplicationBooklistPage extends BasePage{
         return authorElement.getText();
     }
 
+
+    By SearchBar = By.id("searchBox");
+    public void selectSearchBar(String arg1) {
+        driver.findElement(SearchBar).click();
+        driver.findElement(SearchBar).sendKeys(arg1);
+    }
+
+    By LoginButton = By.id("login");
+    public void selectLoginButton() {
+        driver.findElement(LoginButton).click();
+    }
 }

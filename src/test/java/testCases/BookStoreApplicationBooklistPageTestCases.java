@@ -49,4 +49,38 @@ public class BookStoreApplicationBooklistPageTestCases extends BasePage{
         Assert.assertNotEquals(initialAuthor, updatedAuthor);
     }
 
+    @Test
+    public void searchForAvailableBookByAuthorWithValidInput() {
+        bookStoreApplicationBooklistPage.selectSearchBar("Addy");
+        String firstAuthor = bookStoreApplicationBooklistPage.getAuthorForRow(1);
+        Assert.assertEquals("Addy Osmani", firstAuthor);
+    }
+
+    @Test
+    public void searchForAvailableBookByPublisherWithValidInput() {
+        bookStoreApplicationBooklistPage.selectSearchBar("No Starch");
+        String firstAuthor = bookStoreApplicationBooklistPage.getAuthorForRow(1);
+        Assert.assertEquals("Marijn Haverbeke", firstAuthor);
+    }
+
+    @Test
+    public void searchForBookWithInvalidInputNumbers() {
+        bookStoreApplicationBooklistPage.selectSearchBar("123");
+        String firstAuthor = bookStoreApplicationBooklistPage.getAuthorForRow(1);
+        Assert.assertEquals(" ", firstAuthor);
+    }
+
+    @Test
+    public void searchForBookWithInvalidInputSpecialCharacters() {
+        bookStoreApplicationBooklistPage.selectSearchBar("!@#");
+        String firstAuthor = bookStoreApplicationBooklistPage.getAuthorForRow(1);
+        Assert.assertEquals(" ", firstAuthor);
+    }
+
+    @Test
+    public void accessLoginPageFromBookstoreList() {
+        bookStoreApplicationBooklistPage.selectLoginButton();
+        String currentUrl = driver.getCurrentUrl();
+        Assert.assertTrue(currentUrl.contains("/login"));
+    }
 }
