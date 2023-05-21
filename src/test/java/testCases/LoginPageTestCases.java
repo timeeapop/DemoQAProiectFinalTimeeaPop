@@ -11,94 +11,100 @@ import org.testng.annotations.*;
 import pages.BasePage;
 import pages.BookStoreApplicationBooklistPage;
 import pages.RegisterToBookStorePage;
+import pages.LoginPage;
 import java.time.Duration;
-
-
-public class RegisterToBookStoreTestCases extends BasePage {
-    private RegisterToBookStorePage registerToBookStorePage;
-
+public class LoginPageTestCases extends BasePage{
+    private LoginPage loginPage;
     @BeforeMethod
     public void setUp() {
         super.setUp();
-       registerToBookStorePage = new RegisterToBookStorePage(driver);
+        loginPage = new LoginPage(driver);
     }
 
     @Test
-    public void enterNewUserDetailsWithInvalidPasswordInput() {
+    public void loginWithValidUser() {
         driver.findElement(By.id("login")).click();
         String currentUrl = driver.getCurrentUrl();
         Assert.assertTrue(currentUrl.contains("/login"));
-        driver.findElement(By.id("newUser")).click();
-        String currentUrlTwo = driver.getCurrentUrl();
-        Assert.assertTrue(currentUrlTwo.contains("/register"));
 
         JavascriptExecutor scrollDown = (JavascriptExecutor) driver;
         scrollDown.executeScript("window.scrollTo(0, document.body.scrollHeight);");
 
-        registerToBookStorePage.selectFirstNameSection("Timi");
-        registerToBookStorePage.selectLastNameSection("Pop");
-        registerToBookStorePage.selectUserNameSection("timipop");
-        registerToBookStorePage.selectPasswordSection("12345678");
+        loginPage.selectUserName("timipoptest");
+        loginPage.selectPassword("Mv!kQp3zQN@TRkp");
+        loginPage.selectLoginButton();
 
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement userNameAfterLogin = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("userName-value")));
+        Assert.assertEquals("timipoptest", userNameAfterLogin.getText());
     }
-
     @Test
-    public void createNewAccountWithoutMarkingCaptchaButton() {
-        driver.manage().window().maximize();
+    public void loginWithValidUserThanLogout() {
         driver.findElement(By.id("login")).click();
         String currentUrl = driver.getCurrentUrl();
         Assert.assertTrue(currentUrl.contains("/login"));
-        driver.findElement(By.id("newUser")).click();
-        String currentUrlTwo = driver.getCurrentUrl();
-        Assert.assertTrue(currentUrlTwo.contains("/register"));
 
         JavascriptExecutor scrollDown = (JavascriptExecutor) driver;
         scrollDown.executeScript("window.scrollTo(0, document.body.scrollHeight);");
 
-        registerToBookStorePage.selectFirstNameSection("Timi1");
-        registerToBookStorePage.selectLastNameSection("Pop1");
-        registerToBookStorePage.selectUserNameSection("timipop1");
-        registerToBookStorePage.selectPasswordSection("12345678");
-        registerToBookStorePage.selectRegisterButton();
+        loginPage.selectUserName("timipoptest");
+        loginPage.selectPassword("Mv!kQp3zQN@TRkp");
+        loginPage.selectLoginButton();
 
-        WebElement errorMessage = driver.findElement(By.id("name"));
-        Assert.assertEquals("Please verify reCaptcha to register!", errorMessage.getText());
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement userNameAfterLogin = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("userName-value")));
+        Assert.assertEquals("timipoptest", userNameAfterLogin.getText());
+        WebElement logoutButton = driver.findElement(By.id("submit"));
+        logoutButton.click();
+        Assert.assertTrue(currentUrl.contains("/login"));
+
     }
 
     @Test
-    public void getBackToLoginPageAfterAccessingRegisterPage() {
+    public void clickOnNewUserButtonFromLoginPage(){
         driver.findElement(By.id("login")).click();
         String currentUrl = driver.getCurrentUrl();
         Assert.assertTrue(currentUrl.contains("/login"));
-        driver.findElement(By.id("newUser")).click();
-        String currentUrlTwo = driver.getCurrentUrl();
-        Assert.assertTrue(currentUrlTwo.contains("/register"));
 
         JavascriptExecutor scrollDown = (JavascriptExecutor) driver;
         scrollDown.executeScript("window.scrollTo(0, document.body.scrollHeight);");
 
-        registerToBookStorePage.selectBackToLoginButton();
-        String currentUrlThree = driver.getCurrentUrl();
-        Assert.assertTrue(currentUrlThree.contains("/login"));
+        loginPage.selectNewUserButton();
+
+        String currentUrlTwo = driver.getCurrentUrl();
+        Assert.assertTrue(currentUrlTwo.contains("/register"));
     }
 
     @Test
-    public void clickOnRegisterButtonWithoutCompletingDetails() {
-        driver.manage().window().maximize();
+    public void loginWithInvalidUsernameAndPassword() {
         driver.findElement(By.id("login")).click();
         String currentUrl = driver.getCurrentUrl();
         Assert.assertTrue(currentUrl.contains("/login"));
-        driver.findElement(By.id("newUser")).click();
-        String currentUrlTwo = driver.getCurrentUrl();
-        Assert.assertTrue(currentUrlTwo.contains("/register"));
 
         JavascriptExecutor scrollDown = (JavascriptExecutor) driver;
         scrollDown.executeScript("window.scrollTo(0, document.body.scrollHeight);");
 
-        registerToBookStorePage.selectRegisterButton();
+        loginPage.selectUserName("vsfkjdnkjdsfn");
+        loginPage.selectPassword("sclksvsnsvn");
+        loginPage.selectLoginButton();
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement errorMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("name")));
+        Assert.assertEquals("Invalid username or password!", errorMessage.getText());
+    }
+
+    @Test
+    public void clickOnLoginWithoutCompletingUserNameAndPassword() {
+        driver.findElement(By.id("login")).click();
+        String currentUrl = driver.getCurrentUrl();
+        Assert.assertTrue(currentUrl.contains("/login"));
+
+        JavascriptExecutor scrollDown = (JavascriptExecutor) driver;
+        scrollDown.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+
+        loginPage.selectLoginButton();
         WebElement emptyUser = new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".mr-sm-2.is-invalid.form-control")));
         Assert.assertTrue(emptyUser.isDisplayed());
     }
-
 }

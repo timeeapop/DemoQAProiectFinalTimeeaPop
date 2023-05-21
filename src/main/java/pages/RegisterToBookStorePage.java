@@ -45,7 +45,7 @@ public class RegisterToBookStorePage extends BasePage {
         driver.findElement(BackToLoginButton).click();
     }
 
-    By ReadCaptchaButton = By.xpath("//*[@id=\"recaptcha-anchor\"]/div[1]");
+    By ReadCaptchaButton = By.xpath("//*[@id=\"recaptcha-anchor\"]/div[4]");
     public void selectCaptchaButton() {
         driver.findElement(ReadCaptchaButton).click();
     }
