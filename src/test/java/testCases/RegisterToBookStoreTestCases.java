@@ -23,6 +23,7 @@ public class RegisterToBookStoreTestCases extends BasePage {
        registerToBookStorePage = new RegisterToBookStorePage(driver);
     }
 
+    //TEST1
     @Test
     public void enterNewUserDetailsWithInvalidPasswordInput() {
         driver.findElement(By.id("login")).click();
@@ -42,6 +43,7 @@ public class RegisterToBookStoreTestCases extends BasePage {
 
     }
 
+    //TEST2
     @Test
     public void createNewAccountWithoutMarkingCaptchaButton() {
         driver.manage().window().maximize();
@@ -65,6 +67,7 @@ public class RegisterToBookStoreTestCases extends BasePage {
         Assert.assertEquals("Please verify reCaptcha to register!", errorMessage.getText());
     }
 
+    //TEST3
     @Test
     public void getBackToLoginPageAfterAccessingRegisterPage() {
         driver.findElement(By.id("login")).click();
@@ -82,6 +85,7 @@ public class RegisterToBookStoreTestCases extends BasePage {
         Assert.assertTrue(currentUrlThree.contains("/login"));
     }
 
+    //TEST4
     @Test
     public void clickOnRegisterButtonWithoutCompletingDetails() {
         driver.manage().window().maximize();
@@ -100,5 +104,4 @@ public class RegisterToBookStoreTestCases extends BasePage {
                 .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".mr-sm-2.is-invalid.form-control")));
         Assert.assertTrue(emptyUser.isDisplayed());
     }
-
 }

@@ -1,6 +1,9 @@
 package pages;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -24,6 +27,20 @@ public class BasePage {
     public void tearDown() {
         driver.quit();
     }
-
  */
+    public void loginWithValidUser(){
+        driver.manage().window().maximize();
+        driver.findElement(By.id("login")).click();
+        String currentUrl = driver.getCurrentUrl();
+        Assert.assertTrue(currentUrl.contains("/login"));
+
+        driver.findElement(By.id("userName")).click();
+        driver.findElement(By.id("userName")).sendKeys("timipoptest");
+        driver.findElement(By.id("password")).click();
+        driver.findElement(By.id("password")).sendKeys("Mv!kQp3zQN@TRkp");
+        driver.findElement(By.id("login")).click();
+       // Assert.assertTrue(currentUrl.contains("/books"));
+        JavascriptExecutor scrollDown = (JavascriptExecutor) driver;
+        scrollDown.executeScript("window.scrollTo(0, 1000);");
+    }
 }

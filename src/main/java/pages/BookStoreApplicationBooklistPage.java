@@ -47,4 +47,74 @@ public class BookStoreApplicationBooklistPage extends BasePage{
     public void selectLoginButton() {
         driver.findElement(LoginButton).click();
     }
+
+    By Elements = By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[1]/div/div/div[1]/span");
+    public void selectElements() {
+        driver.findElement(Elements).click();
+    }
+
+    By TextBox = By.id("item-0");
+    public void selectTextBox() {
+        driver.findElement(TextBox).click();
+    }
+
+    By CheckBox = By.id("item-1");
+    public void selectCheckBox() {
+        driver.findElement(CheckBox).click();
+    }
+
+    By RadioButton = By.id("item-2");
+    public void selectRadioButton() {
+        driver.findElement(RadioButton).click();
+    }
+
+    By WebTables = By.id("item-3");
+    public void selectWebTables() {
+        driver.findElement(WebTables).click();
+    }
+
+    By Buttons = By.id("item-4");
+    public void selectButtons() {
+        driver.findElement(Buttons).click();
+    }
+
+    By Links = By.id("item-5");
+    public void selectLinks() {
+        driver.findElement(Links).click();
+    }
+
+    By BrokenLinks = By.id("item-6");
+    public void selectBrokenLinks() {
+        driver.findElement(BrokenLinks).click();
+    }
+
+    By UploadAndDownload = By.id("item-7");
+    public void selectUploadAndDownload() {
+        driver.findElement(UploadAndDownload).click();
+    }
+
+    By DynamicProperties = By.id("item-8");
+    public void selectDynamicProperties() {
+        driver.findElement(DynamicProperties).click();
+    }
+
+    By Forms = By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[1]/div/div/div[2]/span/div");
+    public void selectForms() {
+        driver.findElement(Forms).click();
+    }
+
+    By AlertsFrameAndWindows = By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[1]/div/div/div[3]/span/div");
+    public void selectAlertsFrameAndWindows() {
+        driver.findElement(AlertsFrameAndWindows).click();
+    }
+
+    By Widgets = By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[1]/div/div/div[3]/span/div/div[2]/div[2]/svg");
+    public void selectWidgets () {
+        driver.findElement(Widgets).click();
+    }
+
+    By Interactions = By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[1]/div/div/div[5]/span/div");
+    public void selectInteractions() {
+        driver.findElement(Interactions).click();
+    }
 }

@@ -21,6 +21,7 @@ public class LoginPageTestCases extends BasePage{
         loginPage = new LoginPage(driver);
     }
 
+    //TEST1
     @Test
     public void loginWithValidUser() {
         driver.findElement(By.id("login")).click();
@@ -38,6 +39,8 @@ public class LoginPageTestCases extends BasePage{
         WebElement userNameAfterLogin = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("userName-value")));
         Assert.assertEquals("timipoptest", userNameAfterLogin.getText());
     }
+
+    //TEST2
     @Test
     public void loginWithValidUserThanLogout() {
         driver.findElement(By.id("login")).click();
@@ -60,6 +63,7 @@ public class LoginPageTestCases extends BasePage{
 
     }
 
+    //TEST3
     @Test
     public void clickOnNewUserButtonFromLoginPage(){
         driver.findElement(By.id("login")).click();
@@ -75,6 +79,7 @@ public class LoginPageTestCases extends BasePage{
         Assert.assertTrue(currentUrlTwo.contains("/register"));
     }
 
+    //TEST4
     @Test
     public void loginWithInvalidUsernameAndPassword() {
         driver.findElement(By.id("login")).click();
@@ -93,6 +98,7 @@ public class LoginPageTestCases extends BasePage{
         Assert.assertEquals("Invalid username or password!", errorMessage.getText());
     }
 
+    //TEST5
     @Test
     public void clickOnLoginWithoutCompletingUserNameAndPassword() {
         driver.findElement(By.id("login")).click();
