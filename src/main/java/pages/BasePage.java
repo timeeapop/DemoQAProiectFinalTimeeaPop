@@ -45,7 +45,7 @@ public class BasePage {
         driver.findElement(By.id("password")).click();
         driver.findElement(By.id("password")).sendKeys("Mv!kQp3zQN@TRkp");
         driver.findElement(By.id("login")).click();
-       // Assert.assertTrue(currentUrl.contains("/books"));
+        //Assert.assertTrue(currentUrl.contains("/books"));
         //JavascriptExecutor scrollDown = (JavascriptExecutor) driver;
         //scrollDown.executeScript("window.scrollTo(0, 1000);");
     }
@@ -98,5 +98,14 @@ public class BasePage {
         WebElement buttons = new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.id("item-4")));
         buttons.click();
+    }
+
+    public void accessWebTablesPage() {
+        driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[1]/div/div/div[1]/span/div")).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement webTables = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("item-3")));
+        webTables.click();
+        String currentUrl = driver.getCurrentUrl();
+        Assert.assertTrue(currentUrl.contains("/webtables"));
     }
 }

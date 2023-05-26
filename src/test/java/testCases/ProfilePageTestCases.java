@@ -10,6 +10,8 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.BasePage;
 import pages.ProfilePage;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 import java.time.Duration;
 public class ProfilePageTestCases extends BasePage{
     private ProfilePage profilePage;
@@ -26,7 +28,7 @@ public class ProfilePageTestCases extends BasePage{
         driver.manage().window().maximize();
         loginWithValidUser();
         JavascriptExecutor scrollDown = (JavascriptExecutor) driver;
-        WebElement profileButton = driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/div[1]/div/div/div[6]/div/ul/li[3]/svg"));
+        WebElement profileButton = driver.findElement(By.id("item-3"));
         scrollDown.executeScript("arguments[0].scrollIntoView(true);", profileButton);
         profileButton.click();
 
@@ -60,5 +62,33 @@ public class ProfilePageTestCases extends BasePage{
         String updatedAuthor = profilePage.getAuthorForRow(1);
         Assert.assertNotEquals(initialAuthor, updatedAuthor);
     }
-    //not working - ajunge pe pagina de books si nu face scroll down ca sa imi dea click pe butonul de profile
+
+    @Test
+    public void scrollThroughBooksOnProfile3() {
+        driver.manage().window().maximize();
+        loginWithValidUser();
+
+        Actions actions = new Actions(driver);
+        WebElement loginButton = driver.findElement(By.id("item-0"));
+
+        // Scroll to the profile button using moveToElement()
+        actions.moveToElement(loginButton).perform();
+
+        // Press the Arrow Down key to scroll further down
+        actions.sendKeys(Keys.ARROW_DOWN).perform();
+
+        // Wait for the profile button to be clickable
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        loginButton = wait.until(ExpectedConditions.elementToBeClickable(loginButton));
+        loginButton.click();
+
+        WebElement profileButtonLink = driver.findElement(By.xpath("//*[@id=\"loading-label\"]/a"));
+        profileButtonLink.click();
+
+        String initialAuthor = profilePage.getAuthorForRow(1);
+        profilePage.selectNextButton();
+        String updatedAuthor = profilePage.getAuthorForRow(1);
+        Assert.assertNotEquals(initialAuthor, updatedAuthor);
+    }
+
 }
