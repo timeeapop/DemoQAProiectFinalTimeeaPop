@@ -2,11 +2,17 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+
+import java.time.Duration;
+
 public class BasePage {
     protected WebDriver driver;
     private String baseUrl = "https://demoqa.com/books";
@@ -40,7 +46,57 @@ public class BasePage {
         driver.findElement(By.id("password")).sendKeys("Mv!kQp3zQN@TRkp");
         driver.findElement(By.id("login")).click();
        // Assert.assertTrue(currentUrl.contains("/books"));
-        JavascriptExecutor scrollDown = (JavascriptExecutor) driver;
-        scrollDown.executeScript("window.scrollTo(0, 1000);");
+        //JavascriptExecutor scrollDown = (JavascriptExecutor) driver;
+        //scrollDown.executeScript("window.scrollTo(0, 1000);");
+    }
+
+    public void accessCheckboxPage() {
+        driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[1]/div/div/div[1]/span/div")).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement checkBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("item-1")));
+        checkBox.click();
+        String currentUrl = driver.getCurrentUrl();
+        Assert.assertTrue(currentUrl.contains("/checkbox"));
+    }
+
+    public void accessLoginPage() {
+        driver.findElement(By.id("login")).click();
+        String currentUrl = driver.getCurrentUrl();
+        Assert.assertTrue(currentUrl.contains("/login"));
+    }
+
+    public void accessRadioButtonPage() {
+        driver.manage().window().maximize();
+        driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[1]/div/div/div[1]")).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement radioButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("item-2")));
+        radioButton.click();
+        String currentUrl = driver.getCurrentUrl();
+        Assert.assertTrue(currentUrl.contains("/radio-button"));
+    }
+
+    public void accessRegisterToBookStorePage() {
+        driver.manage().window().maximize();
+        driver.findElement(By.id("login")).click();
+        String currentUrl = driver.getCurrentUrl();
+        Assert.assertTrue(currentUrl.contains("/login"));
+        driver.findElement(By.id("newUser")).click();
+        String currentUrlTwo = driver.getCurrentUrl();
+        Assert.assertTrue(currentUrlTwo.contains("/register"));
+    }
+
+    public void accessTextBoxPage() {
+        driver.manage().window().maximize();
+        driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[1]/div/div/div[1]")).click();
+        WebElement textBox = driver.findElement(By.id("item-0"));
+        Assert.assertTrue(textBox.isDisplayed());
+        textBox.click();
+    }
+
+    public void accessButtonsPage() {
+        driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[1]/div/div/div[1]")).click();
+        WebElement buttons = new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.visibilityOfElementLocated(By.id("item-4")));
+        buttons.click();
     }
 }

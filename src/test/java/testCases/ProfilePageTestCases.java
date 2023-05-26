@@ -26,7 +26,7 @@ public class ProfilePageTestCases extends BasePage{
         driver.manage().window().maximize();
         loginWithValidUser();
         JavascriptExecutor scrollDown = (JavascriptExecutor) driver;
-        WebElement profileButton = driver.findElement(By.id("item-3"));
+        WebElement profileButton = driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/div[1]/div/div/div[6]/div/ul/li[3]/svg"));
         scrollDown.executeScript("arguments[0].scrollIntoView(true);", profileButton);
         profileButton.click();
 

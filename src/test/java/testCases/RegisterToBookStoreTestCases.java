@@ -26,6 +26,7 @@ public class RegisterToBookStoreTestCases extends BasePage {
     //TEST1
     @Test
     public void enterNewUserDetailsWithInvalidPasswordInput() {
+        /*
         driver.findElement(By.id("login")).click();
         String currentUrl = driver.getCurrentUrl();
         Assert.assertTrue(currentUrl.contains("/login"));
@@ -33,6 +34,8 @@ public class RegisterToBookStoreTestCases extends BasePage {
         String currentUrlTwo = driver.getCurrentUrl();
         Assert.assertTrue(currentUrlTwo.contains("/register"));
 
+         */
+        accessRegisterToBookStorePage();
         JavascriptExecutor scrollDown = (JavascriptExecutor) driver;
         scrollDown.executeScript("window.scrollTo(0, document.body.scrollHeight);");
 
@@ -46,6 +49,7 @@ public class RegisterToBookStoreTestCases extends BasePage {
     //TEST2
     @Test
     public void createNewAccountWithoutMarkingCaptchaButton() {
+        /*
         driver.manage().window().maximize();
         driver.findElement(By.id("login")).click();
         String currentUrl = driver.getCurrentUrl();
@@ -54,6 +58,8 @@ public class RegisterToBookStoreTestCases extends BasePage {
         String currentUrlTwo = driver.getCurrentUrl();
         Assert.assertTrue(currentUrlTwo.contains("/register"));
 
+         */
+        accessRegisterToBookStorePage();
         JavascriptExecutor scrollDown = (JavascriptExecutor) driver;
         scrollDown.executeScript("window.scrollTo(0, document.body.scrollHeight);");
 
@@ -70,6 +76,7 @@ public class RegisterToBookStoreTestCases extends BasePage {
     //TEST3
     @Test
     public void getBackToLoginPageAfterAccessingRegisterPage() {
+        /*
         driver.findElement(By.id("login")).click();
         String currentUrl = driver.getCurrentUrl();
         Assert.assertTrue(currentUrl.contains("/login"));
@@ -77,6 +84,8 @@ public class RegisterToBookStoreTestCases extends BasePage {
         String currentUrlTwo = driver.getCurrentUrl();
         Assert.assertTrue(currentUrlTwo.contains("/register"));
 
+         */
+        accessRegisterToBookStorePage();
         JavascriptExecutor scrollDown = (JavascriptExecutor) driver;
         scrollDown.executeScript("window.scrollTo(0, document.body.scrollHeight);");
 
@@ -88,6 +97,7 @@ public class RegisterToBookStoreTestCases extends BasePage {
     //TEST4
     @Test
     public void clickOnRegisterButtonWithoutCompletingDetails() {
+        /*
         driver.manage().window().maximize();
         driver.findElement(By.id("login")).click();
         String currentUrl = driver.getCurrentUrl();
@@ -96,6 +106,8 @@ public class RegisterToBookStoreTestCases extends BasePage {
         String currentUrlTwo = driver.getCurrentUrl();
         Assert.assertTrue(currentUrlTwo.contains("/register"));
 
+         */
+        accessRegisterToBookStorePage();
         JavascriptExecutor scrollDown = (JavascriptExecutor) driver;
         scrollDown.executeScript("window.scrollTo(0, document.body.scrollHeight);");
 

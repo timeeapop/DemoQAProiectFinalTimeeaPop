@@ -25,6 +25,7 @@ public class RadioButtonTestCases extends BasePage {
     //TEST1
     @Test
     public void checkIfCursorStyleIsChangedWhenHoveringItOverNoButton() {
+        /*
         driver.manage().window().maximize();
         driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[1]/div/div/div[1]")).click();
         WebElement radioButton = new WebDriverWait(driver, Duration.ofSeconds(10))
@@ -32,7 +33,8 @@ public class RadioButtonTestCases extends BasePage {
         radioButton.click();
         String currentUrl = driver.getCurrentUrl();
         Assert.assertTrue(currentUrl.contains("/radio-button"));
-
+         */
+        accessRadioButtonPage();
         WebElement noButton = driver.findElement(By.id("noRadio"));
         // this creates an instance of the Actions class
         Actions actions = new Actions(driver);
@@ -47,6 +49,7 @@ public class RadioButtonTestCases extends BasePage {
     //TEST2
     @Test
     public void checkIfNoButtonIsClickableSecond() {
+        /*
         driver.manage().window().maximize();
         driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[1]/div/div/div[1]")).click();
         WebElement radioButton = new WebDriverWait(driver, Duration.ofSeconds(10))
@@ -54,7 +57,8 @@ public class RadioButtonTestCases extends BasePage {
         radioButton.click();
         String currentUrl = driver.getCurrentUrl();
         Assert.assertTrue(currentUrl.contains("/radio-button"));
-
+         */
+        accessRadioButtonPage();
         WebElement noButton = driver.findElement(By.id("noRadio"));
         Assert.assertFalse(noButton.isEnabled());
     }
@@ -62,6 +66,7 @@ public class RadioButtonTestCases extends BasePage {
     //TEST3
     @Test
     public void clickOnYesButton() {
+        /*
         driver.manage().window().maximize();
         driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[1]/div/div/div[1]")).click();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -69,7 +74,8 @@ public class RadioButtonTestCases extends BasePage {
         radioButton.click();
         String currentUrl = driver.getCurrentUrl();
         Assert.assertTrue(currentUrl.contains("/radio-button"));
-
+         */
+        accessRadioButtonPage();
         radioButtonPage.selectYesButton();
         WebElement successMessage = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/p/span"));
         Assert.assertTrue(successMessage.isDisplayed());
@@ -78,6 +84,7 @@ public class RadioButtonTestCases extends BasePage {
     //TEST4
     @Test
     public void clickOnImpressiveButton() {
+        /*
         driver.manage().window().maximize();
         driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[1]/div/div/div[1]")).click();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -85,7 +92,8 @@ public class RadioButtonTestCases extends BasePage {
         radioButton.click();
         String currentUrl = driver.getCurrentUrl();
         Assert.assertTrue(currentUrl.contains("/radio-button"));
-
+         */
+        accessRadioButtonPage();
         radioButtonPage.selectImpressiveButton();
         WebElement successMessage = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/p/span"));
         Assert.assertTrue(successMessage.isDisplayed());
