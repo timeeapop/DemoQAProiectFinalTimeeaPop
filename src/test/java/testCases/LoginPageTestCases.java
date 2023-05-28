@@ -24,11 +24,6 @@ public class LoginPageTestCases extends BasePage{
     //TEST1
     @Test
     public void loginWithValidUser() {
-        /*
-        driver.findElement(By.id("login")).click();
-        String currentUrl = driver.getCurrentUrl();
-        Assert.assertTrue(currentUrl.contains("/login"));
-         */
         accessLoginPage();
 
         JavascriptExecutor scrollDown = (JavascriptExecutor) driver;
@@ -46,11 +41,6 @@ public class LoginPageTestCases extends BasePage{
     //TEST2
     @Test
     public void loginWithValidUserThanLogout() {
-        /*
-        driver.findElement(By.id("login")).click();
-        String currentUrl = driver.getCurrentUrl();
-        Assert.assertTrue(currentUrl.contains("/login"));
-         */
         accessLoginPage();
 
         JavascriptExecutor scrollDown = (JavascriptExecutor) driver;
@@ -73,11 +63,6 @@ public class LoginPageTestCases extends BasePage{
     //TEST3
     @Test
     public void clickOnNewUserButtonFromLoginPage() {
-        /*
-        driver.findElement(By.id("login")).click();
-        String currentUrl = driver.getCurrentUrl();
-        Assert.assertTrue(currentUrl.contains("/login"));
-         */
         accessLoginPage();
         JavascriptExecutor scrollDown = (JavascriptExecutor) driver;
         scrollDown.executeScript("window.scrollTo(0, document.body.scrollHeight);");
@@ -91,11 +76,6 @@ public class LoginPageTestCases extends BasePage{
     //TEST4
     @Test
     public void loginWithInvalidUsernameAndPassword() {
-        /*
-        driver.findElement(By.id("login")).click();
-        String currentUrl = driver.getCurrentUrl();
-        Assert.assertTrue(currentUrl.contains("/login"));
-         */
         accessLoginPage();
         JavascriptExecutor scrollDown = (JavascriptExecutor) driver;
         scrollDown.executeScript("window.scrollTo(0, document.body.scrollHeight);");
@@ -112,11 +92,6 @@ public class LoginPageTestCases extends BasePage{
     //TEST5
     @Test
     public void clickOnLoginWithoutCompletingUserNameAndPassword() {
-        /*
-        driver.findElement(By.id("login")).click();
-        String currentUrl = driver.getCurrentUrl();
-        Assert.assertTrue(currentUrl.contains("/login"));
-         */
         accessLoginPage();
         JavascriptExecutor scrollDown = (JavascriptExecutor) driver;
         scrollDown.executeScript("window.scrollTo(0, document.body.scrollHeight);");

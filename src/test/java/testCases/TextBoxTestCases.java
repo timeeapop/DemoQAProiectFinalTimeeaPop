@@ -24,13 +24,6 @@ public class TextBoxTestCases extends BasePage {
     //TEST1
     @Test
     public void checkOutputWithAllInputsCompleted(){
-        /*
-        driver.manage().window().maximize();
-        driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[1]/div/div/div[1]")).click();
-        WebElement textBox = driver.findElement(By.id("item-0"));
-        Assert.assertTrue(textBox.isDisplayed());
-        textBox.click();
-         */
         accessTextBoxPage();
         textBoxPage.selectFullName("timi pop");
         textBoxPage.selectEmail("pop.timeea15@gmail.com");
@@ -60,12 +53,6 @@ public class TextBoxTestCases extends BasePage {
     //TEST2
     @Test
     public void checkOutputWithoutHavingAnyInputCompleted() {
-        /*
-        driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[1]/div/div/div[1]")).click();
-        WebElement textBox = driver.findElement(By.id("item-0"));
-        Assert.assertTrue(textBox.isDisplayed());
-        textBox.click();
-         */
         accessTextBoxPage();
         JavascriptExecutor scrollDown = (JavascriptExecutor) driver;
         scrollDown.executeScript("window.scrollTo(0, document.body.scrollHeight);");
@@ -97,13 +84,6 @@ public class TextBoxTestCases extends BasePage {
     //TEST4
     @Test
     public void checkIfCompletingInvalidEmailAddressIsAvailable2() {
-        /*
-        driver.manage().window().maximize();
-        driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[1]/div/div/div[1]")).click();
-        WebElement textBox = driver.findElement(By.id("item-0"));
-        Assert.assertTrue(textBox.isDisplayed());
-        textBox.click();
-         */
         accessTextBoxPage();
         textBoxPage.selectFullName("a");
         textBoxPage.selectEmail("a");

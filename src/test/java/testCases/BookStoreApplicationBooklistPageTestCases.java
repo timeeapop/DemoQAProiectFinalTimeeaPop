@@ -118,6 +118,7 @@ public class BookStoreApplicationBooklistPageTestCases extends BasePage{
         WebElement uploadAndDownload = driver.findElement(By.id("item-7"));
         Assert.assertTrue(uploadAndDownload.isDisplayed());
         WebElement dynamicProperties = driver.findElement(By.id("item-8"));
+        Assert.assertTrue(dynamicProperties.isDisplayed());
     }
 
     //TEST11

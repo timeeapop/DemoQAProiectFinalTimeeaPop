@@ -29,13 +29,11 @@ public class BasePage {
         driver = new ChromeDriver();
         driver.get(baseUrl);
     }
-/*
+
     @AfterMethod
     public void tearDown() {
         driver.quit();
     }
-
- */
 
     public void loginWithValidUser(){
         driver.manage().window().maximize();
@@ -125,5 +123,17 @@ public class BasePage {
         actions.doubleClick(modalDialogButton).perform();
         String modalDialogsUrl = driver.getCurrentUrl();
         Assert.assertTrue(modalDialogsUrl.contains("https://demoqa.com/modal-dialogs"));
+    }
+
+    public void executeDoubleClick() {
+        WebElement doubleClickMeButton = driver.findElement(By.id("doubleClickBtn"));
+        Actions actions = new Actions(driver);
+        actions.doubleClick(doubleClickMeButton).perform();
+    }
+
+    public void executeRightClick() {
+        WebElement rightClickMeButton = driver.findElement(By.id("rightClickBtn"));
+        Actions actions = new Actions(driver);
+        actions.contextClick(rightClickMeButton).perform();
     }
 }
