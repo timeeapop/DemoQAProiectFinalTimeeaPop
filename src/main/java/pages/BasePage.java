@@ -4,6 +4,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -29,11 +30,13 @@ public class BasePage {
         driver.get(baseUrl);
     }
 /*
-    @AfterMethod //folosim @AfterMethod daca vrem sa inchidem browserul dupa fiecare test case in parte
+    @AfterMethod
     public void tearDown() {
         driver.quit();
     }
+
  */
+
     public void loginWithValidUser(){
         driver.manage().window().maximize();
         driver.findElement(By.id("login")).click();
@@ -107,5 +110,20 @@ public class BasePage {
         webTables.click();
         String currentUrl = driver.getCurrentUrl();
         Assert.assertTrue(currentUrl.contains("/webtables"));
+    }
+
+    public void accessModalDialogPage() {
+        driver.manage().window().maximize();
+        driver.findElement(By.xpath("//*[@id=\"app\"]/header/a/img")).click();
+        String currentUrl = driver.getCurrentUrl();
+        Assert.assertTrue(currentUrl.contains("https://demoqa.com/"));
+        driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div/div[3]")).click();
+        JavascriptExecutor scrollDown = (JavascriptExecutor) driver;
+        scrollDown.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+        WebElement modalDialogButton = driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/div[1]/div/div/div[3]/div/ul/li[5]"));
+        Actions actions = new Actions(driver);
+        actions.doubleClick(modalDialogButton).perform();
+        String modalDialogsUrl = driver.getCurrentUrl();
+        Assert.assertTrue(modalDialogsUrl.contains("https://demoqa.com/modal-dialogs"));
     }
 }

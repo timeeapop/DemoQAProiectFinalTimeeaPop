@@ -30,7 +30,6 @@ public class TextBoxTestCases extends BasePage {
         WebElement textBox = driver.findElement(By.id("item-0"));
         Assert.assertTrue(textBox.isDisplayed());
         textBox.click();
-
          */
         accessTextBoxPage();
         textBoxPage.selectFullName("timi pop");
@@ -66,7 +65,6 @@ public class TextBoxTestCases extends BasePage {
         WebElement textBox = driver.findElement(By.id("item-0"));
         Assert.assertTrue(textBox.isDisplayed());
         textBox.click();
-
          */
         accessTextBoxPage();
         JavascriptExecutor scrollDown = (JavascriptExecutor) driver;
@@ -76,16 +74,10 @@ public class TextBoxTestCases extends BasePage {
         Assert.assertEquals("", "");
     }
 
-    //TEST
-    /*
+    //TEST3
     @Test
     public void checkIfCompletingInvalidEmailAddressIsAvailable() {
-        driver.manage().window().maximize();
-        driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[1]/div/div/div[1]")).click();
-        WebElement textBox = driver.findElement(By.id("item-0"));
-        Assert.assertTrue(textBox.isDisplayed());
-        textBox.click();
-
+        accessTextBoxPage();
         textBoxPage.selectFullName("a");
         textBoxPage.selectEmail("a");
         textBoxPage.selectCurrentAddress("a");
@@ -96,28 +88,11 @@ public class TextBoxTestCases extends BasePage {
         JavascriptExecutor scrollUp = (JavascriptExecutor) driver;
         scrollUp.executeScript("window.scrollTo(0, 0);");
 
-
-        By errorLocator = By.cssSelector("mr-sm-2 field-error form-control");
+        By errorLocator = By.xpath("/html/body/div[2]/div/div/div[2]/div[2]/div[2]/form/div[2]/div[2]/input");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement errorEmail = wait.until(ExpectedConditions.visibilityOfElementLocated(errorLocator));
         Assert.assertTrue(errorEmail.isDisplayed());
-
-        ======
-
-        WebElement errorEmail = new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("mr-sm-2 field-error form-control")));
-        Assert.assertTrue(errorEmail.isDisplayed());
-        ======
-
-        WebElement errorEmail = driver.findElement(By.cssSelector("input#email.mr-sm-2.field-error.form-control"));
-        Assert.assertTrue(errorEmail.isDisplayed());
-
-
-
-        // nu merge asa .. ar mai fi o varianta de vazut de verificat ca output ii gol - check TEST4
     }
-    */
-
 
     //TEST4
     @Test
@@ -128,7 +103,6 @@ public class TextBoxTestCases extends BasePage {
         WebElement textBox = driver.findElement(By.id("item-0"));
         Assert.assertTrue(textBox.isDisplayed());
         textBox.click();
-
          */
         accessTextBoxPage();
         textBoxPage.selectFullName("a");
