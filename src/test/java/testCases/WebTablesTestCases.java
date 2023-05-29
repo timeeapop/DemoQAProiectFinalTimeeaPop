@@ -26,6 +26,7 @@ public class WebTablesTestCases extends BasePage {
     //TEST1
     @Test
     public void clickOnAddButtonToAddNewValidRecord() {
+        driver.manage().window().maximize();
         accessWebTablesPage();
         webTablesPage.selectAddButton();
         WebElement registrationFormModal = driver.findElement(By.xpath("/html/body/div[5]/div/div"));
@@ -44,6 +45,7 @@ public class WebTablesTestCases extends BasePage {
     //TEST2
     @Test
     public void deleteLastUserInputed() {
+        driver.manage().window().maximize();
         accessWebTablesPage();
         webTablesPage.selectAddButton();
         WebElement registrationFormModal = driver.findElement(By.xpath("/html/body/div[5]/div/div"));
@@ -63,6 +65,7 @@ public class WebTablesTestCases extends BasePage {
     //TEST3
     @Test
     public void searchForNewUserAdded() {
+        driver.manage().window().maximize();
         accessWebTablesPage();
         webTablesPage.selectAddButton();
         WebElement registrationFormModal = driver.findElement(By.xpath("/html/body/div[5]/div/div"));
@@ -85,6 +88,7 @@ public class WebTablesTestCases extends BasePage {
     //TEST4
     @Test
     public void editFirstRecordInTheGivenList() {
+        driver.manage().window().maximize();
         accessWebTablesPage();
         webTablesPage.selectEditButtonForFirstRecord();
         webTablesPage.selectFirstNameAndWriteInput("Test");
