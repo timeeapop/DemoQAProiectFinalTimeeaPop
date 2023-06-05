@@ -24,13 +24,14 @@ public class ModalDialogsTestCases extends BasePage {
         accessModalDialogPage();
         modalDialogsPage.selectSmallModalButton();
         WebElement smallModalTitle = driver.findElement(By.id("example-modal-sizes-title-sm"));
+        System.out.println(smallModalTitle.getText());
         Assert.assertEquals(smallModalTitle.getText(), "Small Modal");
         WebElement smallModalDescriptionText = driver.findElement(By.xpath("/html/body/div[4]/div/div/div[2]"));
         Assert.assertEquals(smallModalDescriptionText.getText(), "This is a small modal. It has very less content");
     }
 
     //TEST2
-    @Test (priority = 1)
+    @Test
     public void openSmallModalAndCloseItWithXButton() {
         accessModalDialogPage();
         modalDialogsPage.selectSmallModalButton();
@@ -51,6 +52,7 @@ public class ModalDialogsTestCases extends BasePage {
         accessModalDialogPage();
         modalDialogsPage.selectLargeModalButton();
         WebElement largeModalTitle = driver.findElement(By.id("example-modal-sizes-title-lg"));
+        System.out.println(largeModalTitle.getText());
         Assert.assertEquals(largeModalTitle.getText(), "Large Modal");
         WebElement largeModalTitleDescription = driver.findElement(By.xpath("/html/body/div[4]/div/div/div[2]"));
         Assert.assertEquals(largeModalTitleDescription.getText(), "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.");

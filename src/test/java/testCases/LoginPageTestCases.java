@@ -9,8 +9,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.BasePage;
-import pages.BookStoreApplicationBooklistPage;
-import pages.RegisterToBookStorePage;
 import pages.LoginPage;
 import java.time.Duration;
 public class LoginPageTestCases extends BasePage{
